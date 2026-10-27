@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Every color, radius and font in the app comes from here.
+ * Principle: neutral chrome, the product on a grey "stage" is the hero,
+ * Ostroh blue (accent) only marks selection, active state and focus.
+ */
+@theme {
+  --color-background: #ffffff; /* Paper: page, panels, header */
+  --color-foreground: #22262e; /* Graphite: text, primary buttons */
+  --color-muted-foreground: #5f6673; /* Secondary text */
+  --color-stage: #f1f2f4; /* Product stage, neutral fills */
+  --color-stage-strong: #e6e8eb; /* Stage hover / pressed */
+  --color-border: #e3e6ea; /* Line: hairline borders */
+  --color-input: #d3d7dd; /* Form field borders */
+
+  --color-primary: #22262e;
+  --color-primary-foreground: #ffffff;
+
+  --color-accent: #2f4bff; /* Ostroh blue: selection, active, focus */
+  --color-accent-foreground: #ffffff;
+  --color-ring: #2f4bff;
+
+  --color-destructive: #d63b3b;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #1f9d6b;
+
+  --radius-sm: 4px;
+  --radius-md: 6px; /* Controls: buttons, fields */
+  --radius-lg: 12px; /* Stages, tiles, panels */
+  --radius-xl: 16px; /* Dialogs */
+
+  --font-sans: 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'ss01';
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight text-balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
