@@ -1,0 +1,60 @@
+# Local planning notes
+PLAN.md
+
+# IDE and Editor
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.DotSettings.user
+*.ntvs*
+*.njsproj
+*.sw?
+
+# .NET build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.log
+
+# API secrets / local config
+api/src/API/appsettings.Development.json
+api/src/API/appsettings.Local.json
+api/src/API/data/
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.npm
+.eslintcache
+
+# Client build
+/client/dist
+/client/build
+/coverage
+
+# Environment variables
+.env
+.env.*
+!.env.example
+*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker volumes
+.docker-data/
