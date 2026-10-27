@@ -1,3 +1,6 @@
+using Application.Common.Interfaces.Queries;
+using Application.Common.Interfaces.Repositories;
+using Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -30,5 +33,8 @@ public static class ConfigurePersistence
 
     private static void AddRepositories(this IServiceCollection services)
     {
+        services.AddScoped<MerchItemRepository>();
+        services.AddScoped<IMerchItemRepository>(provider => provider.GetRequiredService<MerchItemRepository>());
+        services.AddScoped<IMerchItemQueries>(provider => provider.GetRequiredService<MerchItemRepository>());
     }
 }

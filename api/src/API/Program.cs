@@ -1,5 +1,6 @@
 using Infrastructure;
 using API.Modules;
+using API.Modules.Errors;
 using Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +13,12 @@ builder.Services.AddInfrastructure(builder);
 builder.Services.AddApplication();
 builder.Services.SetupServices();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 app.UseSwagger();
 app.UseSwaggerUI();
