@@ -1,5 +1,6 @@
 using System.Reflection;
 using Application.Common.Behaviours;
+using Application.Configurations.Commands;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +14,6 @@ public static class ConfigureApplication
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        services.AddScoped<ConfigurationPrintsBuilder>();
     }
 }

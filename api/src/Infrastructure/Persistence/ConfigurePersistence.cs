@@ -36,5 +36,15 @@ public static class ConfigurePersistence
         services.AddScoped<MerchItemRepository>();
         services.AddScoped<IMerchItemRepository>(provider => provider.GetRequiredService<MerchItemRepository>());
         services.AddScoped<IMerchItemQueries>(provider => provider.GetRequiredService<MerchItemRepository>());
+
+        services.AddScoped<PrintRepository>();
+        services.AddScoped<IPrintRepository>(provider => provider.GetRequiredService<PrintRepository>());
+        services.AddScoped<IPrintQueries>(provider => provider.GetRequiredService<PrintRepository>());
+
+        services.AddScoped<SavedConfigurationRepository>();
+        services.AddScoped<ISavedConfigurationRepository>(provider =>
+            provider.GetRequiredService<SavedConfigurationRepository>());
+        services.AddScoped<ISavedConfigurationQueries>(provider =>
+            provider.GetRequiredService<SavedConfigurationRepository>());
     }
 }
